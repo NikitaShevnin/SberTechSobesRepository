@@ -20,12 +20,13 @@
 		A Spring Boot microservice for managing parking operations. It handles vehicle entry/exit and generates reports with statistics over a given period.
 	</description>
 
-	<properties>
-		<java.version>17</java.version>
-		<spring-restdocs.version>3.0.0</spring-restdocs.version>
-		<asciidoctor-maven-plugin.version>2.2.1</asciidoctor-maven-plugin.version>
-		<spring-boot-maven-plugin.version>3.1.4</spring-boot-maven-plugin.version>
-	</properties>
+        <properties>
+                <java.version>17</java.version>
+                <spring-restdocs.version>3.0.0</spring-restdocs.version>
+                <asciidoctor-maven-plugin.version>2.2.1</asciidoctor-maven-plugin.version>
+                <spring-boot-maven-plugin.version>3.1.4</spring-boot-maven-plugin.version>
+                <lombok.version>1.18.32</lombok.version>
+        </properties>
 
 	<dependencies>
 		<!-- Spring Data, Web, Validation -->
@@ -50,11 +51,12 @@
 		</dependency>
 
 		<!-- Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+                <dependency>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>${lombok.version}</version>
+                        <optional>true</optional>
+                </dependency>
 
 		<!-- Test -->
 		<dependency>
@@ -110,11 +112,12 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+                <dependency>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>${lombok.version}</version>
+                        <optional>true</optional>
+                </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -150,11 +153,11 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-							<version>1.18.28</version>
-						</path>
+                                                <path>
+                                                        <groupId>org.projectlombok</groupId>
+                                                        <artifactId>lombok</artifactId>
+                                                        <version>${lombok.version}</version>
+                                                </path>
 					</annotationProcessorPaths>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
