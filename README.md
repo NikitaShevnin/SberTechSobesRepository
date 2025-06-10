@@ -1,22 +1,21 @@
 # Parking Project
 
-This microservice manages a parking lot and provides REST endpoints for vehicle entry, exit and statistics reporting.
+Этот микросервис управляет парковкой и предоставляет REST-эндпоинты для регистрации въезда и выезда транспортных средств, а также для получения статистики.
 
-## Building and running
+## Сборка и запуск
 
 ```bash
 mvn spring-boot:run
 ```
 
-The service expects a PostgreSQL instance configured via `application.properties`.
+Сервис ожидает доступ к экземпляру PostgreSQL, параметры подключения к которому настраиваются в файле `application.properties`.
 
 ## REST API (v1)
 
-- `POST /api/v1/parking/entry` – register vehicle entry.
-- `POST /api/v1/parking/exit` – register vehicle exit.
-- `GET  /api/v1/parking/report?start_date=...&end_date=...` – retrieve parking statistics.
+* `POST /api/v1/parking/entry` – зарегистрировать въезд транспортного средства.
+* `POST /api/v1/parking/exit` – зарегистрировать выезд транспортного средства.
+* `GET  /api/v1/parking/report?start_date=...&end_date=...` – получить статистику по парковке за указанный период.
 
-## Configuration
+## Конфигурация
 
-- `parking.total-spaces` – total available parking places (default `100`).
-
+* `parking.total-spaces` – общее количество парковочных мест (по умолчанию `100`).
