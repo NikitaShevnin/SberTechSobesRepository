@@ -4,10 +4,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sberTechSobes.parkingProject.config.ParkingProperties;
+import ru.sberTechSobes.parkingProject.dto.*;
 import ru.sberTechSobes.parkingProject.entity.ParkingSession;
 import ru.sberTechSobes.parkingProject.enumeration.VehicleType;
 import ru.sberTechSobes.parkingProject.repository.ParkingSessionRepository;
-import ru.sberTechSobes.parkingProject.service.dto.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -63,7 +63,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
-    @Transactional(readOnly = true, isolation = Isolation.SERIALIZABLE)
+    @Transactional(readOnly = true, isolation = Isolation.REPEATABLE_READ)
     public ParkingReportResponse getReport(LocalDateTime startDate, LocalDateTime endDate) {
         List<ParkingSession> sessions = parkingSessionRepository.findAllByEntryTimeBetween(startDate, endDate);
 

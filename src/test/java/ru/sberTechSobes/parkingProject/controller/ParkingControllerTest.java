@@ -6,9 +6,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.sberTechSobes.parkingProject.dto.ParkingEntryResponse;
+import ru.sberTechSobes.parkingProject.dto.ParkingExitResponse;
+import ru.sberTechSobes.parkingProject.dto.ParkingReportResponse;
 import ru.sberTechSobes.parkingProject.enumeration.VehicleType;
 import ru.sberTechSobes.parkingProject.service.ParkingService;
-import ru.sberTechSobes.parkingProject.service.dto.*;
 
 import java.time.LocalDateTime;
 

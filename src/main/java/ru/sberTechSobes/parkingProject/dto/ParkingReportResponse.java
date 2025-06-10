@@ -1,4 +1,4 @@
-package ru.sberTechSobes.parkingProject.service.dto;
+package ru.sberTechSobes.parkingProject.dto;
 
 public class ParkingReportResponse {
     private long entries;

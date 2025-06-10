@@ -1,4 +1,4 @@
-package ru.sberTechSobes.parkingProject.service.dto;
+package ru.sberTechSobes.parkingProject.dto;
 
 /**
  * DTO для запроса регистрации въезда автомобиля на парковку.

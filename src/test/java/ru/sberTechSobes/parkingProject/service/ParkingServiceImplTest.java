@@ -6,11 +6,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
+import ru.sberTechSobes.parkingProject.dto.*;
 import ru.sberTechSobes.parkingProject.entity.ParkingSession;
 import ru.sberTechSobes.parkingProject.enumeration.VehicleType;
 import ru.sberTechSobes.parkingProject.config.ParkingProperties;
 import ru.sberTechSobes.parkingProject.repository.ParkingSessionRepository;
-import ru.sberTechSobes.parkingProject.service.dto.*;
 
 import java.time.LocalDateTime;
 import java.util.List;

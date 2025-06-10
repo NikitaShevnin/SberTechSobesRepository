@@ -1,10 +1,10 @@
 package ru.sberTechSobes.parkingProject.service;
 
-import ru.sberTechSobes.parkingProject.service.dto.ParkingEntryRequest;
-import ru.sberTechSobes.parkingProject.service.dto.ParkingEntryResponse;
-import ru.sberTechSobes.parkingProject.service.dto.ParkingExitRequest;
-import ru.sberTechSobes.parkingProject.service.dto.ParkingExitResponse;
-import ru.sberTechSobes.parkingProject.service.dto.ParkingReportResponse;
+import ru.sberTechSobes.parkingProject.dto.ParkingEntryRequest;
+import ru.sberTechSobes.parkingProject.dto.ParkingEntryResponse;
+import ru.sberTechSobes.parkingProject.dto.ParkingExitRequest;
+import ru.sberTechSobes.parkingProject.dto.ParkingExitResponse;
+import ru.sberTechSobes.parkingProject.dto.ParkingReportResponse;
 
 import java.time.LocalDateTime;
 
