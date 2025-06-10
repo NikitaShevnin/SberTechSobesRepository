@@ -1,5 +1,6 @@
 package ru.sberTechSobes.parkingProject.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sberTechSobes.parkingProject.entity.ParkingSession;
@@ -19,10 +20,12 @@ import java.util.Optional;
 public class ParkingServiceImpl implements ParkingService {
 
     private final ParkingSessionRepository parkingSessionRepository;
-    private final int totalParkingPlaces = 100; // Можно вынести в настройки
+    private final int totalParkingPlaces;
 
-    public ParkingServiceImpl(ParkingSessionRepository parkingSessionRepository) {
+    public ParkingServiceImpl(ParkingSessionRepository parkingSessionRepository,
+                              @Value("${parking.total-spaces:100}") int totalParkingPlaces) {
         this.parkingSessionRepository = parkingSessionRepository;
+        this.totalParkingPlaces = totalParkingPlaces;
     }
 
     @Override
@@ -32,6 +35,9 @@ public class ParkingServiceImpl implements ParkingService {
                 parkingSessionRepository.findByCarNumberAndExitTimeIsNull(request.getCarNumber());
         if (openSession.isPresent()) {
             throw new IllegalStateException("Автомобиль уже на парковке.");
+        }
+        if (parkingSessionRepository.countByExitTimeIsNull() >= totalParkingPlaces) {
+            throw new IllegalStateException("Парковка заполнена.");
         }
         VehicleType type = VehicleType.valueOf(request.getVehicleType().toUpperCase());
         LocalDateTime now = LocalDateTime.now();
