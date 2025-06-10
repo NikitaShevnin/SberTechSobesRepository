@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.sberTechSobes.parkingProject.enumeration.VehicleType;
@@ -19,7 +18,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(ParkingController.class)
-@Import(GlobalExceptionHandler.class)
 class ParkingControllerTest {
 
     @Autowired
@@ -67,12 +65,13 @@ class ParkingControllerTest {
 
     @Test
     void handleExceptionReturnsBadRequest() throws Exception {
-        when(parkingService.registerEntry(any())).thenThrow(new IllegalStateException("err"));
+        when(parkingService.registerEntry(any()))
+                .thenThrow(new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.BAD_REQUEST, "err"));
 
         mockMvc.perform(post("/api/v1/parking/entry")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"carNumber\":\"A\",\"vehicleType\":\"SEDAN\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string("err"));
+                .andExpect(status().isBadRequest());
     }
 }

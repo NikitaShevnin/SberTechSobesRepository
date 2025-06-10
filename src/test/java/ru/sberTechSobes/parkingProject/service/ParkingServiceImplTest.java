@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 import ru.sberTechSobes.parkingProject.entity.ParkingSession;
 import ru.sberTechSobes.parkingProject.enumeration.VehicleType;
+import ru.sberTechSobes.parkingProject.config.ParkingProperties;
 import ru.sberTechSobes.parkingProject.repository.ParkingSessionRepository;
 import ru.sberTechSobes.parkingProject.service.dto.*;
 
@@ -28,7 +29,9 @@ class ParkingServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        service = new ParkingServiceImpl(repository, 100);
+        ParkingProperties properties = new ParkingProperties();
+        properties.setTotalSpaces(100);
+        service = new ParkingServiceImpl(repository, properties);
     }
 
     @Test
