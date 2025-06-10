@@ -1,8 +1,9 @@
 package ru.sberTechSobes.parkingProject.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.sberTechSobes.parkingProject.config.ParkingProperties;
 import ru.sberTechSobes.parkingProject.entity.ParkingSession;
 import ru.sberTechSobes.parkingProject.enumeration.VehicleType;
 import ru.sberTechSobes.parkingProject.repository.ParkingSessionRepository;
@@ -23,9 +24,9 @@ public class ParkingServiceImpl implements ParkingService {
     private final int totalParkingPlaces;
 
     public ParkingServiceImpl(ParkingSessionRepository parkingSessionRepository,
-                              @Value("${parking.total-spaces:100}") int totalParkingPlaces) {
+                              ParkingProperties parkingProperties) {
         this.parkingSessionRepository = parkingSessionRepository;
-        this.totalParkingPlaces = totalParkingPlaces;
+        this.totalParkingPlaces = parkingProperties.getTotalSpaces();
     }
 
     @Override
@@ -62,7 +63,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true, isolation = Isolation.SERIALIZABLE)
     public ParkingReportResponse getReport(LocalDateTime startDate, LocalDateTime endDate) {
         List<ParkingSession> sessions = parkingSessionRepository.findAllByEntryTimeBetween(startDate, endDate);
 
