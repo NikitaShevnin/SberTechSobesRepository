@@ -12,9 +12,15 @@ mvn spring-boot:run
 
 ## REST API (v1)
 
-* `POST /api/v1/parking/entry` – зарегистрировать въезд транспортного средства.
-* `POST /api/v1/parking/exit` – зарегистрировать выезд транспортного средства.
-* `GET  /api/v1/parking/report?start_date=...&end_date=...` – получить статистику по парковке за указанный период.
+Эндпоинты располагаются по адресу сервиса. При запуске локально сервис
+доступен на `http://localhost:8080`. Примеры запросов:
+
+* `POST http://localhost:8080/api/v1/parking/entry` – зарегистрировать
+  въезд транспортного средства.
+* `POST http://localhost:8080/api/v1/parking/exit` – зарегистрировать
+  выезд транспортного средства.
+* `GET  http://localhost:8080/api/v1/parking/report?start_date=...&end_date=...`
+  – получить статистику по парковке за указанный период.
 
 ## Конфигурация
 
